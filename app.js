@@ -4,7 +4,8 @@ const itemList = document.querySelector(".collection");
 const clearBtn = document.querySelector(".clear-items");
 const filter = document.querySelector("#filter");
 const itemInput = document.querySelector("#item");
-
+const label = document.querySelector('label');
+console.log(label.innerHTML);
 // Load Event Listeners
 loadEventListeners();
 function loadEventListeners() {
@@ -25,9 +26,16 @@ function addItem(e) {
   // Add to list
   li.appendChild(link);
   itemList.appendChild(li);
+  if (label.innerHTML === 'Input cannot be empty') {
+    label.innerHTML = 'New Item';
+    label.className= 'normal';
+    console.log(label);
+  }
   // Empty submission
   if (itemInput.value === "") {
-    alert("Empty Input");
+    label.innerHTML = 'Input cannot be empty';
+    label.className= 'errorMessage';
+    console.log(label);
     itemList.lastChild.remove();
   }
   // Clear Input
