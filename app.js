@@ -14,6 +14,7 @@ function loadEventListeners() {
   itemList.addEventListener("click", removeItem);
   itemList.addEventListener("click", markComplete);
   clearBtn.addEventListener("click", clearComplete);
+  filter.addEventListener("keyup", filterItems);
 }
 
 //addItem
@@ -62,8 +63,21 @@ function markComplete(e) {
 
 function clearComplete() {
   let completed = document.querySelectorAll(".completed");
-  completed = Array.from(completed);
   completed.forEach(function (complete) {
     complete.remove();
+  });
+}
+
+function filterItems(e) {
+  const text = e.target.value.toLowerCase();
+  console.log(e.target.value);
+  document.querySelectorAll(".collection-item").forEach(function (item) {
+    console.log(itemList);
+    const target = item.firstChild.textContent;
+    if (target.toLowerCase().indexOf(text) != -1) {
+      item.style.display = "block";
+    } else {
+      item.style.display = "none";
+    }
   });
 }
