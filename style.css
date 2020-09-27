@@ -1,3 +1,7 @@
 .errorMessage {
   color: red !important;
 }
+
+.completed {
+  text-decoration: line-through;
+}
